@@ -160,3 +160,19 @@ func NewBlockCipher(key []byte, sbox [][]byte) (cipher.Block, error) {
 
 	return g, nil
 }
+
+func NewCipher(key []byte) (cipher.Block, error) {
+	if len(key) != (256 / 8) {
+		return nil, KeySizeError(len(key))
+	}
+
+	kbox := sboxExpansion(&SboxIdtc26gost28147paramZ)
+
+	g := &_GOST{
+		key: bytesToUint32s(key),
+		s:   sbox,
+		k:   kbox,
+	}
+
+	return g, nil
+}
