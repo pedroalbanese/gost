@@ -170,7 +170,7 @@ func NewCipher(key []byte) (cipher.Block, error) {
 
 	g := &_GOST{
 		key: bytesToUint32s(key),
-		s:   sbox,
+		s:   SboxIdtc26gost28147paramZ,
 		k:   kbox,
 	}
 
