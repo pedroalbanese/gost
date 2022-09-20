@@ -166,7 +166,7 @@ func NewCipher(key []byte) (cipher.Block, error) {
 		return nil, KeySizeError(len(key))
 	}
 
-	kbox := sboxExpansion(&SboxIdtc26gost28147paramZ)
+	kbox := sboxExpansion(SboxIdtc26gost28147paramZ)
 
 	g := &_GOST{
 		key: bytesToUint32s(key),
